@@ -32,7 +32,7 @@ export default function ProjectPolymath() {
               <h5 className="font-semibold text-lg text-green-400 mb-2">Lean POC Plan & Timeline</h5>
               <p><strong className="text-stone-100">Months 1-3:</strong> 5-person team ($300K budget). Train MVP on 1K datasets; build robotic synthesizer or partner with UIUC / Argonne NL's 'Polybot'. <br />
               <strong className="text-stone-100">Months 4-6:</strong> Iterate 100 formulations; target 80% accuracy. Total: $500K. <br />
-              <strong className="text-stone-100">Kill Criteria:</strong> &lt;70% accuracy by Month 3; >$100K overrun; no LOI by Month 6.</p>
+              <strong className="text-stone-100">Kill Criteria:</strong> &lt;70% accuracy by Month 3; &gt;$100K overrun; no LOI by Month 6.</p>
             </div>
             <div>
               <h5 className="font-semibold text-lg text-green-400 mb-2">Commercial Traction</h5>
