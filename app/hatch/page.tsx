@@ -107,7 +107,7 @@ export default function HatchPage() {
             </div>
             <div>
               <h5 className="font-semibold text-lg text-cyan-400 mb-2">Lean POC Plan & Timeline</h5>
-              <p><strong className="text-stone-100">Months 1-3:</strong> 5-person team (2 geneticists, 2 engineers, 1 PM; $300K budget). Build MVP microfluidics; test on 100 samples.<br/><strong className="text-stone-100">Months 4-6:</strong> Pilot with clinics; target 50% success boost. Total: $500K ($200K hardware, $300K labor).<br/><strong className="text-stone-100">Kill Criteria:</strong> &lt;40% accuracy by Month 3; >$100K overrun; ethics/regulatory flags (e.g., no FDA nod). Pivot to Verily if killed.</p>
+              <p><strong className="text-stone-100">Months 1-3:</strong> 5-person team (2 geneticists, 2 engineers, 1 PM; $300K budget). Build MVP microfluidics; test on 100 samples.<br/><strong className="text-stone-100">Months 4-6:</strong> Pilot with clinics; target 50% success boost. Total: $500K ($200K hardware, $300K labor).<br/><strong className="text-stone-100">Kill Criteria:</strong> &lt;40% accuracy by Month 3; &gt;$100K overrun; ethics/regulatory flags (e.g., no FDA nod). Pivot to Verily if killed.</p>
             </div>
           </div>
           

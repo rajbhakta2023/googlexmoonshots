@@ -108,7 +108,7 @@ export default function WHealthPage() {
             </div>
             <div>
               <h5 className="font-semibold text-lg text-yellow-400 mb-2">Lean POC Plan & Timeline</h5>
-              <p><strong className="text-stone-100">Months 1-3:</strong> 6-person team (2 biologists, 2 AI experts, 1 PM, 1 clinician; $400K budget). Build MVP kit; test on 100 users.<br/><strong className="text-stone-100">Months 4-6:</strong> Validate 40% risk reduction. Total: $700K ($300K hardware, $400K labor).<br/><strong className="text-stone-100">Kill Criteria:</strong> &lt;30% accuracy by Month 3; >$200K overrun; no FDA path by Month 6. Pivot to Verily if killed.</p>
+              <p><strong className="text-stone-100">Months 1-3:</strong> 6-person team (2 biologists, 2 AI experts, 1 PM, 1 clinician; $400K budget). Build MVP kit; test on 100 users.<br/><strong className="text-stone-100">Months 4-6:</strong> Validate 40% risk reduction. Total: $700K ($300K hardware, $400K labor).<br/><strong className="text-stone-100">Kill Criteria:</strong> &lt;30% accuracy by Month 3; &gt;$200K overrun; no FDA path by Month 6. Pivot to Verily if killed.</p>
             </div>
           </div>
           

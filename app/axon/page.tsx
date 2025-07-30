@@ -93,8 +93,9 @@ export default function AxonPage() {
         if (input) {
           const eventType = input.id === 'task-selector' ? 'click' : 'input';
           input.addEventListener(eventType, (e) => {
-            if (e.currentTarget.id === 'task-selector' && (e.target as HTMLElement).tagName !== 'BUTTON') return;
-            if (e.currentTarget.id === 'task-selector') {
+            const currentTarget = e.currentTarget as HTMLElement;
+            if (currentTarget && currentTarget.id === 'task-selector' && (e.target as HTMLElement).tagName !== 'BUTTON') return;
+            if (currentTarget && currentTarget.id === 'task-selector') {
               const currentActive = taskSelector.querySelector('.active');
               if (currentActive) currentActive.classList.remove('active');
               (e.target as HTMLElement).classList.add('active');
@@ -163,7 +164,7 @@ export default function AxonPage() {
             </div>
             <div>
               <h5 className="font-semibold text-lg text-purple-400 mb-2">Lean POC Plan & Timeline</h5>
-              <p><strong className="text-stone-100">Months 1-3:</strong> 5-person team (2 neuroscientists, 2 engineers, 1 PM; $500K budget). Culture 10 organoids; integrate TPU for pattern tasks.<br/><strong className="text-stone-100">Months 4-6:</strong> Robot arm demo; target &lt;10ms latency, 1,000x efficiency. Total: $500K.<br/><strong className="text-stone-100">Kill Criteria:</strong> &lt;0.1 TFLOPS by Month 3; >50ms latency; ethics flags (EEG >0.6); no LOI by Month 6.</p>
+              <p><strong className="text-stone-100">Months 1-3:</strong> 5-person team (2 neuroscientists, 2 engineers, 1 PM; $500K budget). Culture 10 organoids; integrate TPU for pattern tasks.<br/><strong className="text-stone-100">Months 4-6:</strong> Robot arm demo; target &lt;10ms latency, 1,000x efficiency. Total: $500K.<br/><strong className="text-stone-100">Kill Criteria:</strong> &lt;0.1 TFLOPS by Month 3; &gt;50ms latency; ethics flags (EEG &gt;0.6); no LOI by Month 6.</p>
             </div>
           </div>
           

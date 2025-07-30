@@ -25,7 +25,7 @@ export default function NimbusPage() {
       
       if (!sstDecreaseSlider) return;
       
-      const stormData = {
+      const stormData: { [key: number]: { wind: number; lossRate: number; fatalityRate: number; displacementRate: number; so2Multiplier: number } } = {
         1: { wind: 85, lossRate: 0.005, fatalityRate: 0.00001, displacementRate: 0.01, so2Multiplier: 0.5 },
         2: { wind: 100, lossRate: 0.02, fatalityRate: 0.00005, displacementRate: 0.05, so2Multiplier: 0.8 },
         3: { wind: 120, lossRate: 0.08, fatalityRate: 0.0005, displacementRate: 0.25, so2Multiplier: 1.0 },
@@ -121,8 +121,9 @@ export default function NimbusPage() {
         if (input) {
           const eventType = input.id === 'category-selector' ? 'click' : 'input';
           input.addEventListener(eventType, (e) => {
-            if (e.currentTarget.id === 'category-selector' && (e.target as HTMLElement).tagName !== 'BUTTON') return;
-            if (e.currentTarget.id === 'category-selector') {
+            const currentTarget = e.currentTarget as HTMLElement;
+            if (currentTarget && currentTarget.id === 'category-selector' && (e.target as HTMLElement).tagName !== 'BUTTON') return;
+            if (currentTarget && currentTarget.id === 'category-selector') {
               const currentActive = categorySelector.querySelector('.active');
               if (currentActive) currentActive.classList.remove('active');
               (e.target as HTMLElement).classList.add('active');
@@ -179,7 +180,7 @@ export default function NimbusPage() {
             <h4 className="font-bold text-2xl text-white">Executive Memo</h4>
             <div>
               <h5 className="font-semibold text-lg text-blue-400 mb-2">First Principles Summary</h5>
-              <p>Weather physics: Hurricanes gain energy from SST >26.5°C via latent heat (thermodynamics); AgI seeding nucleates ice in supercooled clouds, disrupting eyewall convection; SO2 aerosols boost albedo, inducing -1.5 W/m² radiative effect per Mt for SST cooling. AI optimizes via satellite predictions, scaling the $27.6B geoengineering market ($87B by 2032 at 15.5% CAGR).</p>
+              <p>Weather physics: Hurricanes gain energy from SST &gt;26.5°C via latent heat (thermodynamics); AgI seeding nucleates ice in supercooled clouds, disrupting eyewall convection; SO2 aerosols boost albedo, inducing -1.5 W/m² radiative effect per Mt for SST cooling. AI optimizes via satellite predictions, scaling the $27.6B geoengineering market ($87B by 2032 at 15.5% CAGR).</p>
             </div>
             <div>
               <h5 className="font-semibold text-lg text-blue-400 mb-2">Problem & 10x Impact</h5>
@@ -195,7 +196,7 @@ export default function NimbusPage() {
             </div>
             <div>
               <h5 className="font-semibold text-lg text-blue-400 mb-2">Kill Criteria</h5>
-              <p>&lt;1% intensity reduction by Month 3; >2% ozone depletion; >$200K overrun; regulatory/ethical blocks (e.g., no EPA nod). Repurpose AI & HW to Bellwether if killed.</p>
+              <p>&lt;1% intensity reduction by Month 3; &gt;2% ozone depletion; &gt;$200K overrun; regulatory/ethical blocks (e.g., no EPA nod). Repurpose AI & HW to Bellwether if killed.</p>
             </div>
           </div>
           

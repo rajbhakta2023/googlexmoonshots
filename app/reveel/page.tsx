@@ -108,7 +108,7 @@ export default function ReveelPage() {
             </div>
             <div>
               <h5 className="font-semibold text-lg text-red-400 mb-2">Lean POC Plan & Timeline</h5>
-              <p><strong className="text-stone-100">Months 1-3:</strong> 5-person team (2 materials scientists, 2 designers, 1 PM; $300K budget). Develop prototype fabric; test 50 changes.<br/><strong className="text-stone-100">Months 4-6:</strong> User pilots; target 95% durability. Total: $500K ($200K materials, $300K labor).<br/><strong className="text-stone-100">Kill Criteria:</strong> &lt;80% color stability by Month 3; >$100K overrun; no partner LOI by Month 6. Pivot to Circularity if killed.</p>
+              <p><strong className="text-stone-100">Months 1-3:</strong> 5-person team (2 materials scientists, 2 designers, 1 PM; $300K budget). Develop prototype fabric; test 50 changes.<br/><strong className="text-stone-100">Months 4-6:</strong> User pilots; target 95% durability. Total: $500K ($200K materials, $300K labor).<br/><strong className="text-stone-100">Kill Criteria:</strong> &lt;80% color stability by Month 3; &gt;$100K overrun; no partner LOI by Month 6. Pivot to Circularity if killed.</p>
             </div>
           </div>
           
