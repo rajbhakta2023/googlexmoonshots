@@ -25,14 +25,14 @@ export default function NimbusPage() {
       
       if (!sstDecreaseSlider) return;
       
-      const stormData: any = {
+      const stormData = {
         1: { wind: 85, lossRate: 0.005, fatalityRate: 0.00001, displacementRate: 0.01, so2Multiplier: 0.5 },
         2: { wind: 100, lossRate: 0.02, fatalityRate: 0.00005, displacementRate: 0.05, so2Multiplier: 0.8 },
         3: { wind: 120, lossRate: 0.08, fatalityRate: 0.0005, displacementRate: 0.25, so2Multiplier: 1.0 },
         4: { wind: 145, lossRate: 0.20, fatalityRate: 0.001, displacementRate: 0.50, so2Multiplier: 1.5 },
         5: { wind: 170, lossRate: 0.40, fatalityRate: 0.005, displacementRate: 0.85, so2Multiplier: 2.0 }
       };
-
+      
       const costPerDrone = 150000;
       const costPerBalloon = 250000;
       const costPerTonSO2 = 1500;
@@ -42,41 +42,46 @@ export default function NimbusPage() {
       const numInterventionsPerYear = 3;
       const amortizationPeriodYears = 5;
       const googleProfitMargin = 0.50;
-
+      
       const activeCatButton = categorySelector?.querySelector('.active') as HTMLElement;
       if (!activeCatButton) return;
-
+      
       const initialCat = parseInt(activeCatButton.dataset.cat || '4');
       const sstDecrease = parseFloat(sstDecreaseSlider.value);
       const assetValue = parseFloat(assetValueSlider.value) * 1e9;
       const population = parseFloat(populationSlider.value) * 1e6;
       const fleetSizeDrones = parseInt(droneFleetSlider.value);
       const fleetSizeBalloons = parseInt(balloonFleetSlider.value);
-
+      
       const initialWind = stormData[initialCat].wind;
       const windReduction = sstDecrease * 15;
       const newWind = Math.max(73, initialWind - windReduction);
       const intensityReductionFactor = (initialWind > 0) ? (1 - Math.pow(newWind / initialWind, 3)) : 0;
-
+      
       const tonsSO2 = baseTonsSO2PerDegree * sstDecrease * stormData[initialCat].so2Multiplier;
       const materialCostPerStorm = tonsSO2 * costPerTonSO2;
       const totalDeploymentCostPerStorm = deploymentLogisticsPerStorm + materialCostPerStorm;
+      
       const capitalCost = (fleetSizeDrones * costPerDrone) + (fleetSizeBalloons * costPerBalloon);
       const annualAmortizedCapex = capitalCost / amortizationPeriodYears;
       const totalAnnualDeploymentCost = totalDeploymentCostPerStorm * numInterventionsPerYear;
       const totalAnnualCostToGoogle = annualAmortizedCapex + operationalCostPerYear + totalAnnualDeploymentCost;
+      
       const annualServiceFee = totalAnnualCostToGoogle * (1 + googleProfitMargin);
       const totalPotentialLossPerYear = assetValue * stormData[initialCat].lossRate * numInterventionsPerYear;
       const totalAvertedDamagePerYear = totalPotentialLossPerYear * intensityReductionFactor;
+      
       const clientROI = (annualServiceFee > 0) ? ((totalAvertedDamagePerYear - annualServiceFee) / annualServiceFee * 100) : Infinity;
       const benefitCostRatio = (annualServiceFee > 0) ? (totalAvertedDamagePerYear / annualServiceFee) : Infinity;
+      
       const potentialFatalities = population * stormData[initialCat].fatalityRate;
       const livesSaved = potentialFatalities * intensityReductionFactor;
       const potentialDisplaced = population * stormData[initialCat].displacementRate;
       const displacedSaved = potentialDisplaced * intensityReductionFactor;
 
+      // Update display values
       const sstDecreaseValue = document.getElementById('sst-decrease-value');
-      const assetValueEl = document.getElementById('asset-value');
+      const assetValueDisplay = document.getElementById('asset-value');
       const populationValue = document.getElementById('population-value');
       const droneFleetValue = document.getElementById('drone-fleet-value');
       const balloonFleetValue = document.getElementById('balloon-fleet-value');
@@ -89,7 +94,7 @@ export default function NimbusPage() {
       const displacedSavedDisplay = document.getElementById('displaced-saved-display');
 
       if (sstDecreaseValue) sstDecreaseValue.textContent = `${sstDecrease.toFixed(1)} °C`;
-      if (assetValueEl) assetValueEl.textContent = `${formatCurrency(assetValue, true)}`;
+      if (assetValueDisplay) assetValueDisplay.textContent = `${formatCurrency(assetValue, true)}`;
       if (populationValue) populationValue.textContent = `${population.toLocaleString('en-US', {maximumFractionDigits: 1})} M`;
       if (droneFleetValue) droneFleetValue.textContent = fleetSizeDrones.toString();
       if (balloonFleetValue) balloonFleetValue.textContent = fleetSizeBalloons.toString();
@@ -109,21 +114,22 @@ export default function NimbusPage() {
     const populationSlider = document.getElementById('population-slider');
     const droneFleetSlider = document.getElementById('drone-fleet-slider');
     const balloonFleetSlider = document.getElementById('balloon-fleet-slider');
-
+    
     if (categorySelector) {
       const allInputs = [categorySelector, sstDecreaseSlider, assetValueSlider, populationSlider, droneFleetSlider, balloonFleetSlider];
       allInputs.forEach(input => {
-        if (!input) return;
-        const eventType = input.id === 'category-selector' ? 'click' : 'input';
-        input.addEventListener(eventType, (e: any) => {
-          if (e.currentTarget.id === 'category-selector' && e.target.tagName !== 'BUTTON') return;
-          if (e.currentTarget.id === 'category-selector') {
-            const currentActive = categorySelector.querySelector('.active');
-            if (currentActive) currentActive.classList.remove('active');
-            e.target.classList.add('active');
-          }
-          updateWeatherCalculator();
-        });
+        if (input) {
+          const eventType = input.id === 'category-selector' ? 'click' : 'input';
+          input.addEventListener(eventType, (e) => {
+            if (e.currentTarget.id === 'category-selector' && (e.target as HTMLElement).tagName !== 'BUTTON') return;
+            if (e.currentTarget.id === 'category-selector') {
+              const currentActive = categorySelector.querySelector('.active');
+              if (currentActive) currentActive.classList.remove('active');
+              (e.target as HTMLElement).classList.add('active');
+            }
+            updateWeatherCalculator();
+          });
+        }
       });
     }
 
@@ -135,26 +141,23 @@ export default function NimbusPage() {
     <>
       {/* Header Section */}
       <header className="bg-stone-950/70 backdrop-blur-sm sticky top-0 z-50 border-b border-stone-800">
-        <div className="container-wide mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-white">Moonshot Memos</h1>
-                <p className="text-sm text-stone-400">Proposals for a 10x Future</p>
-              </div>
-            </Link>
-            <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-stone-300 hover:text-white transition-colors">Home</Link>
-              <Link href="/polymath" className="text-stone-300 hover:text-white transition-colors">Polymath</Link>
-              <Link href="/axon" className="text-stone-300 hover:text-white transition-colors">Axon</Link>
-            </nav>
+        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <Link href="/" className="flex items-center gap-3 text-xl md:text-2xl font-bold text-white hover:text-stone-300 transition-colors">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-stone-400">
+              <path d="M18.364 5.63604L13.4142 10.5858L18.364 15.5355L15.5355 18.364L10.5858 13.4142L5.63604 18.364L2.80761 15.5355L7.75736 10.5858L2.80761 5.63604L5.63604 2.80761L10.5858 7.75736L15.5355 2.80761L18.364 5.63604Z" fill="#fbbc05"/>
+              <path d="M21.1924 15.5355L19.7782 16.9497L13.4142 10.5858L19.7782 4.22183L21.1924 5.63604L16.2426 10.5858L21.1924 15.5355Z" fill="#ea4335"/>
+            </svg>
+            <span>Moonshot Memos</span>
+          </Link>
+          <div className="hidden md:flex items-center space-x-6 text-sm">
+            <Link href="/polymath" className="nav-link hover:text-green-400 transition-colors">Polymath</Link>
+            <Link href="/nimbus" className="nav-link hover:text-blue-400 transition-colors">Nimbus</Link>
+            <Link href="/axon" className="nav-link hover:text-purple-400 transition-colors">Axon</Link>
+            <Link href="/hatch" className="nav-link hover:text-cyan-400 transition-colors">Hatch</Link>
+            <Link href="/reveel" className="nav-link hover:text-red-400 transition-colors">Reveel</Link>
+            <Link href="/w-health" className="nav-link hover:text-yellow-400 transition-colors">W-Health</Link>
           </div>
-        </div>
+        </nav>
       </header>
 
       {/* Hero Section */}
@@ -176,11 +179,23 @@ export default function NimbusPage() {
             <h4 className="font-bold text-2xl text-white">Executive Memo</h4>
             <div>
               <h5 className="font-semibold text-lg text-blue-400 mb-2">First Principles Summary</h5>
-              <p>Weather physics: Hurricanes gain energy from SST &gt;26.5°C via latent heat (thermodynamics); AgI seeding nucleates ice in supercooled clouds, disrupting eyewall convection; SO2 aerosols boost albedo, inducing -1.5 W/m² radiative effect per Mt for SST cooling. AI optimizes via satellite predictions, scaling the $27.6B geoengineering market ($87B by 2032 at 15.5% CAGR).</p>
+              <p>Weather physics: Hurricanes gain energy from SST >26.5°C via latent heat (thermodynamics); AgI seeding nucleates ice in supercooled clouds, disrupting eyewall convection; SO2 aerosols boost albedo, inducing -1.5 W/m² radiative effect per Mt for SST cooling. AI optimizes via satellite predictions, scaling the $27.6B geoengineering market ($87B by 2032 at 15.5% CAGR).</p>
             </div>
             <div>
               <h5 className="font-semibold text-lg text-blue-400 mb-2">Problem & 10x Impact</h5>
               <p>Disasters cost $145B in insured losses (2025 est.), hurricanes averaging $123.5B/year; physics heuristic: 10% wind drop (velocity^3 scaling) yields ~27% decrease in intensity resulting in damage reduction (saves ~$30B / year). Revenue ~$10M-100M contracts for insurers/governments ($8.7B market by 2032). 10x+ ROI: $10M+ contract per storm saves $20B (e.g., Cat 4 like Harvey).</p>
+            </div>
+            <div>
+              <h5 className="font-semibold text-lg text-blue-400 mb-2">Creative Solution</h5>
+              <p>Loon-inspired fleets (50 drones/20 balloons+) with AI for dynamic seeding: E.g., 350kg AgI disrupts rainbands (48-hour timeline); 0.1Mt SO2 cools 0.5°C over 10,000km² Gulf (14 days) — reversible "climate-control" with ethical monitoring.</p>
+            </div>
+            <div>
+              <h5 className="font-semibold text-lg text-blue-400 mb-2">Lean POC Plan & Timeline</h5>
+              <p><strong className="text-stone-100">Months 1-3:</strong> 5-person team (1 meteorologist, 1 AI-E & 1 HW-E ,1 policy business lead, 1 PM; $400K budget). Simulate 100 scenarios via X Project Bellwether; perform 'cloud chamber experiment to falsify hypothesis'. <br/><strong className="text-stone-100">Months 4-6:</strong> Cloud chamber pilots; target 20%-30% intensity reduction / 0.2°C cooling. Total: $700K ($300K hardware, $400K labor).</p>
+            </div>
+            <div>
+              <h5 className="font-semibold text-lg text-blue-400 mb-2">Kill Criteria</h5>
+              <p>&lt;1% intensity reduction by Month 3; >2% ozone depletion; >$200K overrun; regulatory/ethical blocks (e.g., no EPA nod). Repurpose AI & HW to Bellwether if killed.</p>
             </div>
           </div>
           
@@ -277,12 +292,48 @@ export default function NimbusPage() {
               </div>
             </div>
           </div>
+          
+          <div className="mt-16">
+            <h4 className="font-bold text-2xl text-white text-center mb-8">Climate Shield Operations</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+              <div className="bg-stone-900 p-4 rounded-lg border border-stone-800">
+                <img src="https://placehold.co/600x400/1c1917/4285f4?text=1.+AI+Prediction" alt="AI analyzing satellite weather patterns" className="rounded-md object-cover w-full h-full aspect-video mb-3" />
+                <h5 className="font-semibold text-white">AI Prediction</h5>
+                <p className="text-sm text-stone-400">AI models forecast storm development and identify intervention points.</p>
+              </div>
+              <div className="bg-stone-900 p-4 rounded-lg border border-stone-800">
+                <img src="https://placehold.co/600x400/1c1917/4285f4?text=2.+Fleet+Deployment" alt="A fleet of high-altitude balloons and drones" className="rounded-md object-cover w-full h-full aspect-video mb-3" />
+                <h5 className="font-semibold text-white">Fleet Deployment</h5>
+                <p className="text-sm text-stone-400">An autonomous fleet of drones & balloons is dispatched to the target area.</p>
+              </div>
+              <div className="bg-stone-900 p-4 rounded-lg border border-stone-800">
+                <img src="https://placehold.co/600x400/1c1917/4285f4?text=3.+Targeted+Seeding" alt="Dispersion of micro-particles into clouds" className="rounded-md object-cover w-full h-full aspect-video mb-3" />
+                <h5 className="font-semibold text-white">Targeted Seeding</h5>
+                <p className="text-sm text-stone-400">Materials are precisely released to alter albedo or nucleation.</p>
+              </div>
+              <div className="bg-stone-900 p-4 rounded-lg border border-stone-800">
+                <img src="https://placehold.co/600x400/1c1917/4285f4?text=4.+Impact+Monitoring" alt="A weather dashboard showing a weakened storm" className="rounded-md object-cover w-full h-full aspect-video mb-3" />
+                <h5 className="font-semibold text-white">Impact Monitoring</h5>
+                <p className="text-sm text-stone-400">Effects are monitored in real-time to ensure safety and efficacy.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-12 bg-stone-950 border border-stone-800 rounded-xl p-6">
+            <h5 className="font-bold text-lg text-white mb-3">Model Assumptions & Executive Framing</h5>
+            <ul className="list-disc list-inside space-y-2 text-sm text-stone-400">
+              <li><strong className="text-stone-300">Material Costs:</strong> Seeding material (SO2) cost is modeled at <strong className="text-white">$1,500/ton</strong>. The quantity needed is estimated based on storm category and target SST decrease, representing a significant operational cost.</li>
+              <li><strong className="text-stone-300">Value-Based Pricing:</strong> The "Annual Service Fee" is not based on cost, but on the immense value delivered. It's calculated to ensure the client always sees a massive ROI, aligning our incentives with saving their assets.</li>
+              <li><strong className="text-stone-300">Physics Heuristic (1°C ≈ 15 mph):</strong> This linear relationship is a working model for this calculator. A primary goal of the POC is to develop a high-fidelity, probabilistic model to replace this heuristic, providing clients with confidence intervals on storm suppression.</li>
+              <li><strong className="text-stone-300">Liability & Regulation (The Dragon):</strong> This model intentionally omits the immense cost of liability insurance and regulatory approvals. This is the largest non-technical risk. The POC phase would focus heavily on engaging insurers and regulators to create a viable framework, which is the true "moonshot" challenge alongside the technology.</li>
+            </ul>
+          </div>
         </div>
       </article>
 
       {/* Footer */}
       <footer className="bg-stone-950 border-t border-stone-800 py-12">
-        <div className="container-wide mx-auto px-6">
+        <div className="container mx-auto px-6">
           <div className="text-center">
             <p className="text-stone-400">&copy; 2024 Moonshot Memos. All rights reserved.</p>
           </div>

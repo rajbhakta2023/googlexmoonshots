@@ -78,26 +78,23 @@ export default function PolymathPage() {
     <>
       {/* Header Section */}
       <header className="bg-stone-950/70 backdrop-blur-sm sticky top-0 z-50 border-b border-stone-800">
-        <div className="container-wide mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-white">Moonshot Memos</h1>
-                <p className="text-sm text-stone-400">Proposals for a 10x Future</p>
-              </div>
-            </Link>
-            <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-stone-300 hover:text-white transition-colors">Home</Link>
-              <Link href="/nimbus" className="text-stone-300 hover:text-white transition-colors">Nimbus</Link>
-              <Link href="/axon" className="text-stone-300 hover:text-white transition-colors">Axon</Link>
-            </nav>
+        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <Link href="/" className="flex items-center gap-3 text-xl md:text-2xl font-bold text-white hover:text-stone-300 transition-colors">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-stone-400">
+              <path d="M18.364 5.63604L13.4142 10.5858L18.364 15.5355L15.5355 18.364L10.5858 13.4142L5.63604 18.364L2.80761 15.5355L7.75736 10.5858L2.80761 5.63604L5.63604 2.80761L10.5858 7.75736L15.5355 2.80761L18.364 5.63604Z" fill="#fbbc05"/>
+              <path d="M21.1924 15.5355L19.7782 16.9497L13.4142 10.5858L19.7782 4.22183L21.1924 5.63604L16.2426 10.5858L21.1924 15.5355Z" fill="#ea4335"/>
+            </svg>
+            <span>Moonshot Memos</span>
+          </Link>
+          <div className="hidden md:flex items-center space-x-6 text-sm">
+            <Link href="/polymath" className="nav-link hover:text-green-400 transition-colors">Polymath</Link>
+            <Link href="/nimbus" className="nav-link hover:text-blue-400 transition-colors">Nimbus</Link>
+            <Link href="/axon" className="nav-link hover:text-purple-400 transition-colors">Axon</Link>
+            <Link href="/hatch" className="nav-link hover:text-cyan-400 transition-colors">Hatch</Link>
+            <Link href="/reveel" className="nav-link hover:text-red-400 transition-colors">Reveel</Link>
+            <Link href="/w-health" className="nav-link hover:text-yellow-400 transition-colors">W-Health</Link>
           </div>
-        </div>
+        </nav>
       </header>
 
       {/* Hero Section */}
@@ -128,6 +125,14 @@ export default function PolymathPage() {
             <div>
               <h5 className="font-semibold text-lg text-green-400 mb-2">Creative Solution</h5>
               <p>Integrate DeepMind's generative models with robotic high-throughput labs: Simulate 1,000 formulations/week, validate via micro-synthesis, yielding super-materials like 10x-stronger biodegradable plastics.</p>
+            </div>
+            <div>
+              <h5 className="font-semibold text-lg text-green-400 mb-2">Lean POC Plan & Timeline</h5>
+              <p><strong className="text-stone-100">Months 1-3:</strong> 5-person team ($300K budget). Train MVP on 1K datasets; build robotic synthesizer or partner with UIUC / Argonne NL's 'Polybot'. <br/><strong className="text-stone-100">Months 4-6:</strong> Iterate 100 formulations; target 80% accuracy. Total: $500K. <br/><strong className="text-stone-100">Kill Criteria:</strong> &lt;70% accuracy by Month 3; >$100K overrun; no LOI by Month 6.</p>
+            </div>
+            <div>
+              <h5 className="font-semibold text-lg text-green-400 mb-2">Commercial Traction</h5>
+              <p>Dr. Raj Bhakta can bring in a paid pilot (~$20k) and leverage his past startup's IP & customer relationships with a $10B Global Polymer leader for commercial polymer coatings & rubber formulation POCs towards commercial deployment in 1-2 years.</p>
             </div>
           </div>
           
@@ -188,12 +193,57 @@ export default function PolymathPage() {
               <p className="text-stone-400">Combined Savings & Revenue Advantage</p>
             </div>
           </div>
+          
+          <div className="mt-12 bg-stone-950 border border-stone-800 rounded-xl p-6">
+            <h5 className="font-bold text-lg text-white mb-3">Model Assumptions & Executive Framing</h5>
+            <ul className="list-disc list-inside space-y-2 text-sm text-stone-400">
+              <li><strong className="text-stone-300">10x Speed & Cost Reduction:</strong> The calculator models a 10x improvement in both cost and time-to-market. This is the project's North Star, achieved by shifting R&D from slow, expensive physical synthesis to rapid, low-cost virtual simulation.</li>
+              <li><strong className="text-stone-300">Revenue Advantage:</strong> The most significant value driver is often speed. By getting a product to market years sooner, a partner captures revenue that would otherwise not exist. This model quantifies that advantage.</li>
+              <li><strong className="text-stone-300">Customer-Facing Costs:</strong> The model assumes a customer's one-time CAPEX of $500k and annual OPEX of $200k for the robotic hardware. It does not include Google's internal R&D burn for the core AI team.</li>
+            </ul>
+          </div>
+          
+          <div className="mt-16">
+            <h4 className="font-bold text-2xl text-white text-center mb-8">'Prompt-to-Polymer' Workflow</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+              <div className="bg-stone-900 p-4 rounded-lg border border-stone-800 flex flex-col">
+                <h5 className="font-semibold text-white mb-3">1. User Prompt</h5>
+                <div className="flex-grow flex items-center justify-center">
+                  <div className="prompt-box text-left w-full">
+                    <span className="text-green-400">&gt;</span> Design a lightweight, biodegradable plastic with 5x the tensile strength of PLA for use in medical implants...
+                  </div>
+                </div>
+                <p className="text-sm text-stone-400 mt-3">A user defines desired material properties in natural language.</p>
+              </div>
+              <div className="bg-stone-900 p-4 rounded-lg border border-stone-800 flex flex-col">
+                <h5 className="font-semibold text-white mb-3">2. AI Agent Design</h5>
+                <div className="flex-grow flex items-center justify-center">
+                  <img src="https://placehold.co/600x400/1c1917/34a853?text=Gemini+Agents+Simulating" alt="Abstract visualization of AI agents and neural networks" className="rounded-md object-cover w-full h-full aspect-video" />
+                </div>
+                <p className="text-sm text-stone-400 mt-3">Gemini agents interpret the prompt, run simulations, and generate candidate molecules.</p>
+              </div>
+              <div className="bg-stone-900 p-4 rounded-lg border border-stone-800 flex flex-col">
+                <h5 className="font-semibold text-white mb-3">3. Autonomous Synthesis</h5>
+                <div className="flex-grow flex items-center justify-center">
+                  <img src="https://placehold.co/600x400/1c1917/34a853?text=Robotic+Lab+Executing+Plan" alt="A robotic arm and liquid handler preparing vials" className="rounded-md object-cover w-full h-full aspect-video" />
+                </div>
+                <p className="text-sm text-stone-400 mt-3">The AI's chosen designs are autonomously synthesized and tested by robotic systems.</p>
+              </div>
+              <div className="bg-stone-900 p-4 rounded-lg border border-stone-800 flex flex-col">
+                <h5 className="font-semibold text-white mb-3">4. Material Validation</h5>
+                <div className="flex-grow flex items-center justify-center">
+                  <img src="https://placehold.co/600x400/1c1917/34a853?text=Validated+Material+Report" alt="A chart showing the new material's superior properties" className="rounded-md object-cover w-full h-full aspect-video" />
+                </div>
+                <p className="text-sm text-stone-400 mt-3">A full report on the new material's properties is generated, ready for scaling.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </article>
 
       {/* Footer */}
       <footer className="bg-stone-950 border-t border-stone-800 py-12">
-        <div className="container-wide mx-auto px-6">
+        <div className="container mx-auto px-6">
           <div className="text-center">
             <p className="text-stone-400">&copy; 2024 Moonshot Memos. All rights reserved.</p>
           </div>
