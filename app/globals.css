@@ -11,6 +11,12 @@
 }
 
 @layer components {
+  .container-wide {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
   .memo-card {
     background-color: #1c1917;
     border: 1px solid #292524;
