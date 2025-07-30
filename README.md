@@ -87,9 +87,13 @@ npm start
 ├── app/
 │   ├── layout.tsx          # Root layout with metadata
 │   ├── page.tsx            # Main landing page
-│   └── globals.css         # Global styles and Tailwind
-├── components/
-│   └── ProjectPolymath.tsx # Individual project pages
+│   ├── globals.css         # Global styles and Tailwind
+│   ├── polymath/page.tsx   # Project Polymath page
+│   ├── nimbus/page.tsx     # Project Nimbus page
+│   ├── axon/page.tsx       # Project Axon page
+│   ├── hatch/page.tsx      # Project Hatch page
+│   ├── reveel/page.tsx     # Project Reveel page
+│   └── w-health/page.tsx   # Project W-Health page
 ├── public/                 # Static assets
 ├── package.json            # Dependencies and scripts
 ├── tailwind.config.js      # Tailwind configuration
@@ -101,7 +105,7 @@ npm start
 
 - **Interactive Calculators**: Real-time financial impact modeling for each project
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
-- **Smooth Navigation**: Single-page application with smooth transitions
+- **Next.js Routing**: File-system based routing for optimal performance
 - **Video Backgrounds**: Atmospheric video backgrounds for each project
 - **Interactive Sliders**: Dynamic calculators with real-time updates
 - **Dark Theme**: Consistent dark theme throughout the application
@@ -142,4 +146,4 @@ This is a showcase project for Google X proposals. For questions or feedback, pl
 
 ---
 
-*"The best way to predict the future is to invent it."* - Alan Kay 
+*"The best way to predict the future is to invent it."* - Alan Kay
