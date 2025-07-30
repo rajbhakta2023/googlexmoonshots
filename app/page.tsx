@@ -4,70 +4,33 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <>
-      {/* Header Section */}
-      <header className="bg-stone-950/70 backdrop-blur-sm sticky top-0 z-50 border-b border-stone-800">
-        <div className="container-wide mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-white">Moonshot Memos</h1>
-                <p className="text-sm text-stone-400">Proposals for a 10x Future</p>
-              </div>
-            </div>
-            <nav className="hidden md:flex space-x-8">
-              <a href="#about" className="text-stone-300 hover:text-white transition-colors">About</a>
-              <a href="#projects" className="text-stone-300 hover:text-white transition-colors">Projects</a>
-              <a href="#contact" className="text-stone-300 hover:text-white transition-colors">Contact</a>
-            </nav>
-          </div>
+    <div className="min-h-screen bg-stone-950 text-white">
+      {/* Simple Header */}
+      <header className="bg-stone-900 border-b border-stone-800 py-4">
+        <div className="max-w-6xl mx-auto px-6">
+          <h1 className="text-2xl font-bold text-white">Moonshot Memos</h1>
         </div>
       </header>
 
-      {/* Main Landing Page View */}
-      <div className="min-h-screen">
-        {/* Hero Section */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
-          {/* Background Video */}
-          <div className="hero-video-bg absolute inset-0">
-            <video
-              autoPlay
-              muted
-              loop
-              className="w-full h-full object-cover opacity-20"
-              src="https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-particle-flow-997-large.mp4"
-            />
+      {/* Simple Hero Section */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            Moonshot Memos
+          </h1>
+          <p className="text-xl text-stone-300 mb-8 max-w-3xl mx-auto">
+            Six radical ideas presented for the Google X Rapid Evaluation Team, designed to solve some of the world's most pressing problems with breakthrough technology.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="#projects"
+              className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Explore Projects
+            </Link>
           </div>
-          
-          {/* Content Overlay */}
-          <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Moonshot Memos
-            </h1>
-            <p className="text-xl md:text-2xl text-stone-300 mb-8 max-w-3xl mx-auto">
-              Six radical ideas presented for the Google X Rapid Evaluation Team, designed to solve some of the world's most pressing problems with breakthrough technology.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="#projects"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
-              >
-                Explore Projects
-              </Link>
-              <a 
-                href="#about"
-                className="border border-stone-600 text-stone-300 px-8 py-4 rounded-lg font-semibold hover:bg-stone-800 hover:text-white transition-all duration-300"
-              >
-                Learn More
-              </a>
-            </div>
-          </div>
-        </section>
+        </div>
+      </section>
 
         {/* Projects Grid Section */}
         <section id="projects" className="py-20 bg-stone-900">
