@@ -27,7 +27,7 @@ export default function Home() {
       </header>
 
       {/* Main Landing Page View */}
-      <div id="main-page" className="page-view">
+      <div id="main-page">
         <section className="container mx-auto px-6 pt-16 md:pt-24 text-center">
           <div className="relative z-30">
             <h2 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">
