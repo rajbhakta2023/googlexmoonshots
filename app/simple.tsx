@@ -1,6 +1,4 @@
-import Link from 'next/link';
-
-export default function Home() {
+export default function Simple() {
   return (
     <div style={{ 
       minHeight: '100vh', 
@@ -13,14 +11,14 @@ export default function Home() {
       padding: '20px',
       textAlign: 'center'
     }}>
-      <h1 style={{ fontSize: '3rem', marginBottom: '1rem', fontWeight: 'bold' }}>
+      <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>
         Moonshot Memos
       </h1>
-      <p style={{ fontSize: '1.2rem', maxWidth: '600px', marginBottom: '2rem', color: '#d6d3d1' }}>
+      <p style={{ fontSize: '1.2rem', maxWidth: '600px', marginBottom: '2rem' }}>
         Six radical ideas presented for the Google X Rapid Evaluation Team, designed to solve some of the world's most pressing problems with breakthrough technology.
       </p>
       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-        <Link href="/polymath" style={{ 
+        <a href="/polymath" style={{ 
           backgroundColor: '#2563eb', 
           color: 'white', 
           padding: '12px 24px', 
@@ -29,8 +27,8 @@ export default function Home() {
           fontWeight: 'bold'
         }}>
           Project Polymath
-        </Link>
-        <Link href="/nimbus" style={{ 
+        </a>
+        <a href="/nimbus" style={{ 
           backgroundColor: '#2563eb', 
           color: 'white', 
           padding: '12px 24px', 
@@ -39,8 +37,8 @@ export default function Home() {
           fontWeight: 'bold'
         }}>
           Project Nimbus
-        </Link>
-        <Link href="/axon" style={{ 
+        </a>
+        <a href="/axon" style={{ 
           backgroundColor: '#2563eb', 
           color: 'white', 
           padding: '12px 24px', 
@@ -49,10 +47,10 @@ export default function Home() {
           fontWeight: 'bold'
         }}>
           Project Axon
-        </Link>
+        </a>
       </div>
       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '1rem' }}>
-        <Link href="/hatch" style={{ 
+        <a href="/hatch" style={{ 
           backgroundColor: '#2563eb', 
           color: 'white', 
           padding: '12px 24px', 
@@ -61,8 +59,8 @@ export default function Home() {
           fontWeight: 'bold'
         }}>
           Project Hatch
-        </Link>
-        <Link href="/reveel" style={{ 
+        </a>
+        <a href="/reveel" style={{ 
           backgroundColor: '#2563eb', 
           color: 'white', 
           padding: '12px 24px', 
@@ -71,8 +69,8 @@ export default function Home() {
           fontWeight: 'bold'
         }}>
           Project Reveel
-        </Link>
-        <Link href="/w-health" style={{ 
+        </a>
+        <a href="/w-health" style={{ 
           backgroundColor: '#2563eb', 
           color: 'white', 
           padding: '12px 24px', 
@@ -81,7 +79,7 @@ export default function Home() {
           fontWeight: 'bold'
         }}>
           Project W-Health
-        </Link>
+        </a>
       </div>
     </div>
   );
