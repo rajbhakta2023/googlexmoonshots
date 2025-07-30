@@ -176,7 +176,7 @@ export default function NimbusPage() {
             <h4 className="font-bold text-2xl text-white">Executive Memo</h4>
             <div>
               <h5 className="font-semibold text-lg text-blue-400 mb-2">First Principles Summary</h5>
-              <p>Weather physics: Hurricanes gain energy from SST >26.5°C via latent heat (thermodynamics); AgI seeding nucleates ice in supercooled clouds, disrupting eyewall convection; SO2 aerosols boost albedo, inducing -1.5 W/m² radiative effect per Mt for SST cooling. AI optimizes via satellite predictions, scaling the $27.6B geoengineering market ($87B by 2032 at 15.5% CAGR).</p>
+              <p>Weather physics: Hurricanes gain energy from SST &gt;26.5°C via latent heat (thermodynamics); AgI seeding nucleates ice in supercooled clouds, disrupting eyewall convection; SO2 aerosols boost albedo, inducing -1.5 W/m² radiative effect per Mt for SST cooling. AI optimizes via satellite predictions, scaling the $27.6B geoengineering market ($87B by 2032 at 15.5% CAGR).</p>
             </div>
             <div>
               <h5 className="font-semibold text-lg text-blue-400 mb-2">Problem & 10x Impact</h5>
