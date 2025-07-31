@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Global styles for Google X Moonshots Landing Page */
 
 body {
@@ -10,6 +14,56 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+/* Navigation styles */
+.nav-link {
+  @apply text-stone-300 hover:text-white transition-colors duration-200;
+}
+
+/* Container utilities */
+.container-wide {
+  @apply max-w-7xl mx-auto;
+}
+
+/* Hero video background */
+.hero-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 10;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(12, 10, 9, 0.8) 0%,
+    rgba(28, 25, 23, 0.6) 50%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  z-index: 20;
+}
+
+/* Task selector styles */
+.task-btn {
+  @apply text-stone-300 bg-transparent hover:bg-stone-700 hover:text-white transition-all duration-200;
+}
+
+.task-btn.active {
+  @apply bg-stone-700 text-white;
+}
+
+/* Prompt box styling */
+.prompt-box {
+  @apply bg-stone-800 border border-stone-700 rounded-md p-3 text-sm font-mono text-stone-300;
 }
 
 /* Styles for project pages */
@@ -45,4 +99,23 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
   border-radius: 50%;
   background: #2563eb;
+  border: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1c1917;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #44403c;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #57534e;
 }
