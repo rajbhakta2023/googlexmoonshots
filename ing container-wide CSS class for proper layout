@@ -1,3 +1,0 @@
-[33m44a7e36[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Add Vercel build fix documentation
-[33m404fad7[m Fix: Add missing Next.js files for Vercel build
-[33m09d53af[m Simplify: Minimal Next.js config for Vercel deployment

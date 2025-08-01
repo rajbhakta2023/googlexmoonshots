@@ -119,3 +119,32 @@ input[type="range"]::-moz-range-thumb {
 ::-webkit-scrollbar-thumb:hover {
   background: #57534e;
 }
+
+/* Memo card styles */
+.memo-card {
+  @apply bg-stone-900 border border-stone-800 transition-all duration-300 hover:scale-105 hover:shadow-xl;
+}
+
+.memo-card.polymath:hover {
+  @apply border-green-500/50 shadow-green-500/20;
+}
+
+.memo-card.nimbus:hover {
+  @apply border-blue-500/50 shadow-blue-500/20;
+}
+
+.memo-card.axon:hover {
+  @apply border-purple-500/50 shadow-purple-500/20;
+}
+
+.memo-card.hatch:hover {
+  @apply border-cyan-500/50 shadow-cyan-500/20;
+}
+
+.memo-card.reveel:hover {
+  @apply border-red-500/50 shadow-red-500/20;
+}
+
+.memo-card.w-health:hover {
+  @apply border-yellow-500/50 shadow-yellow-500/20;
+}
