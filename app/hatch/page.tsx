@@ -103,7 +103,7 @@ export default function HatchPage() {
             </div>
             <div>
               <h5 className="font-semibold text-lg text-cyan-400 mb-2">Creative Solution</h5>
-              <p>AI optimizes health (nutrition/wearables) + polygenic screening; microfluidics tests 1,000 combos/week for ideal embryos, like "genetic matchmaking" for families.</p>
+              <p>AI optimizes health (nutrition/wearables) + polygenic screening; microfluidics tests 1,000 combos/week for ideal embryos, like &quot;genetic matchmaking&quot; for families.</p>
             </div>
             <div>
               <h5 className="font-semibold text-lg text-cyan-400 mb-2">Lean POC Plan & Timeline</h5>

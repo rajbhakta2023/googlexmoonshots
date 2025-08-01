@@ -292,7 +292,7 @@ export default function AxonPage() {
             <ul className="list-disc list-inside space-y-2 text-sm text-stone-400">
               <li><strong className="text-stone-300">Target Cost for Viability:</strong> The $5,000 Bio-TPU hardware cost is not a current price but the *target unit cost* required to be competitive with silicon at scale. Achieving this cost is a primary goal of the project.</li>
               <li><strong className="text-stone-300">Focus on Operational Efficiency:</strong> This calculator models the dramatic energy and time savings during the *operational training phase* of a robot fleet. It demonstrates the core value proposition to an end-user.</li>
-              <li><strong className="text-stone-300">The Biological Foundry Problem:</strong> The model does not include the significant R&D and manufacturing costs of producing stable, scalable cortical organoids. Solving this "biological foundry" problem is the central technical challenge and the key to unlocking 10x impact. The moonshot is won or lost here.</li>
+              <li><strong className="text-stone-300">The Biological Foundry Problem:</strong> The model does not include the significant R&D and manufacturing costs of producing stable, scalable cortical organoids. Solving this &quot;biological foundry&quot; problem is the central technical challenge and the key to unlocking 10x impact. The moonshot is won or lost here.</li>
             </ul>
           </div>
         </div>

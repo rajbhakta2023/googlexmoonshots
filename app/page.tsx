@@ -34,7 +34,7 @@ export default function Home() {
               Proposals for a <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-red-500 to-blue-500">10x Future</span>
             </h2>
             <p className="mt-4 md:mt-6 max-w-3xl mx-auto text-lg md:text-xl text-stone-400">
-              Six radical ideas presented for the Google X Rapid Evaluation Team, designed to solve some of the world's most pressing problems with breakthrough technology.
+              Six radical ideas presented for the Google X Rapid Evaluation Team, designed to solve some of the world&apos;s most pressing problems with breakthrough technology.
             </p>
           </div>
         </section>
