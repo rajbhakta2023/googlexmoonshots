@@ -10,16 +10,14 @@ module.exports = {
       colors: {
         stone: {
           950: '#0c0a09',
-          900: '#1c1917',
-          800: '#292524',
-          700: '#44403c',
-          500: '#78716c',
-          400: '#a8a29e',
-          300: '#d6d3d1',
-          100: '#f5f5f4',
         },
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },
   plugins: [],
-} 
+}
